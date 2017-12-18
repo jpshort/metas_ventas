@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+     <record model="ir.ui.view" id="metasvendededores_form_view">
+          <field name="name">metasvendedores.form</field>
+          <field name="model">metasventa.metasvendedores</field>
+          <field name="arch" type="xml">
+              <form string="Meta anual por vendedor">
+                  <sheet>
+                      <group>
+                          <field name="ano"/>
+                          <field name="mes"/>
+                          <field name="vendedor"/>
+                          <field name="monto"/>
+                      </group>
+                   </sheet>
+              </form>
+          </field>
+     </record>
+
+     <record model="ir.ui.view" id="metasvendedores_tree_view">
+         <field name="name">metasvendedores.tree</field>
+         <field name="model">metasventa.metasvendedores</field>
+         <field name="arch" type="xml">
+             <tree string="Meta Anual por Vendedor">
+                 <field name="ano"/>
+                 <field name="mes"/>
+                 <field name="vendedor"/>
+                 <field name="monto"/>
+             </tree>
+         </field>
+     </record>
+
+     <record model="ir.ui.view" id="metasvendedores_search_view">
+         <field name="name">metasvendedores.search</field>
+         <field name="model">metasventa.metasvendedores</field>
+         <field name="arch" type="xml">
+             <search string="Meta Anual por Vendedor">
+                 <field name="ano"/>
+                 <field name="mes"/>
+                 <field name="vendedor"/>
+                 <field name="monto"/>
+             </search>
+         </field>
+     </record>
+
+     <record model="ir.actions.act_window"  id="metasvendedores_list_actions">
+            <field name="name">Metas Vendedores</field>
+            <field name="res_model">metasventa.metasvendedores</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field> 
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crear meta por vendedor</p>
+            </field> 
+      </record>        
+
+      <menuitem id="meta_vendedores_menu" name="Metas Vendedores" 
+                parent="base.menu_sales_config"
+                action="metasvendedores_list_actions"/> 
+
+                    <!-- VISTAS CLIENTES-->
+
+      <record model="ir.ui.view" id="metasclientes_form_view">
+          <field name="name">metasclientes.form</field>
+          <field name="model">metasventa.metasclientes</field>
+          <field name="arch" type="xml">
+              <form string="Metas Clientes">
+                  <sheet> 
+                      <group>                      
+                          <field name="ano"/>
+                          <field name="cliente"/>
+                          <field name="monto"/>
+                      </group>                     
+                  </sheet>
+              </form>
+          </field>
+      </record>    
+
+      <record model="ir.ui.view" id="metasclientes_tree_view">
+          <field name="name">metasclientes.tree</field>
+          <field name="model">metasventa.metasclientes</field>
+          <field name="arch" type="xml">
+              <tree>
+                 <field name="ano"/>
+                 <field name="cliente"/>
+                 <field name="monto"/>                                          
+              </tree>
+          </field>
+      </record>
+
+      <record model = "ir.ui.view" id="metasclientes_search_view">
+          <field name="name">metasclientes.serch</field>
+          <field name="model">metasventa.metasclientes</field>
+          <field name="arch" type="xml">
+              <search string="Buscar Metas">
+                 <field name="cliente"/>
+                 <field name="ano"/>
+                 <field name="monto"/>
+             </search>         
+           </field>                                 
+      </record>
+
+      <record model="ir.actions.act_window" id="metasclientes_list_actions">
+          <field name="name">Metas Clientes</field>
+          <field name="res_model">metasventa.metasclientes</field>
+          <field name="view_type">form</field> 
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html"> 
+              <p class="oe_view_nocontant_create">Crear meta por cliente</p> 
+          </field>
+      </record>
+
+      <menuitem id="meta_clientes_menu" name="Metas Clientes"
+                parent="base.menu_sales_config"
+                action="metasclientes_list_actions"/> 
+   </data>
+</openerp>
