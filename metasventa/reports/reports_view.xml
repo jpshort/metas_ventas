@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data >
+        <record id="view_metas_vendedores_pivot" model="ir.ui.view">
+            <field name="name">metasventa.report.pivot</field>
+            <field name="model">metasventa.vendedoresreport</field>
+            <field name="arch" type="xml">
+                <graph string="Analisis por Vendedores">
+                    <field name="ano" type="row"/>
+                </graph>
+            </field>            
+        </record>
+         
+        <record id="action_metas_vendedores_report" model="ir.actions.act_window">
+            <field name="name">Analisis Metas por Vendedores</field>
+            <field name="res_model">metasventa.vendedoresreport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot,graph</field>
+        </record>
+    </data>
+   
+    <menuitem id="report_vendedores_menu" name="Reporte por Vendedores" 
+              parent="base.menu_sales_config"
+              action="action_metas_vendedores_report" />
+</openerp>
