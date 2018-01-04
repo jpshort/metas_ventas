@@ -11,6 +11,7 @@ class MetasventaDataReport(models.Model):
     name   = fields.Char(string="Vendedor")
     montofacturado = fields.Float(string="Monto Facturado")
     montometa      = fields.Float(string="Monto Pronosticado")
+    logro          = fields.Float(string="% Logrado")
 
     def init(self,cr):
         tools.drop_view_if_exists(cr,self._table)
@@ -21,7 +22,8 @@ class MetasventaDataReport(models.Model):
                                m.ano as ano,
                                m.mes as mes,
                                m.monto as montometa,
-                               sum(i.amount_untaxed) as montofacturado
+                               sum(i.amount_untaxed) as montofacturado,                              
+                               sum((i.amount_untaxed/m.monto) * 100) as logro
                         from metasventa_metasvendedores as m                        
                         join res_users u 
                           on u.id = m.vendedor
@@ -43,6 +45,7 @@ class MetasventaClientesReport(models.Model):
     name   = fields.Char(string="Cliente")
     montofacturado = fields.Float(string="Monto Facturado")
     montometa      = fields.Float(string="Monto Pronosticado")
+    logro          = fields.Float(string="% Logrado")
 
     def init(self,cr):
         tools.drop_view_if_exists(cr,self._table)
@@ -52,7 +55,8 @@ class MetasventaClientesReport(models.Model):
                                u.name as name,
                                m.ano as ano,                               
                                m.monto as montometa,
-                               sum(i.amount_untaxed) as montofacturado
+                               sum(i.amount_untaxed) as montofacturado,
+                               sum((i.amount_untaxed/m.monto) * 100) as logro
                         from metasventa_metasclientes as m                        
                         join res_partner u 
                           on u.id = m.cliente

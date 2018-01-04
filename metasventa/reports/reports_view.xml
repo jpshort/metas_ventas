@@ -10,6 +10,7 @@
                     <field name = "ano"/>
                     <field name = "mes"/>
                     <field name = "montofacturado"/>
+                    <field name = "logro"/> 
                 </graph>
             </field>            
         </record>
@@ -19,10 +20,11 @@
             <field name="model">metasventa.vendedoresreport</field>
             <field name="arch" type="xml">
                 <pivot string="Metas por Vendedores">                    
-                    <field name = "name"/>
-                    <field name = "ano"/>
-                    <field name = "mes"/>
-                    <field name = "montofacturado"/>
+                    <field name="name"/>
+                    <field name="ano"/>
+                    <field name="mes"/>
+                    <field name="montofacturado"/>
+                    <field name="logro"/>
                 </pivot>
             </field>
         </record>
@@ -37,6 +39,7 @@
                     <field name="mes"/>
                     <field name="montofacturado"/>
                     <field name="montometa"/>
+                    <field name="logro"/>
                 </tree>
             </field>
         </record>
@@ -63,6 +66,7 @@
                     <field name="ano"/>                    
                     <field name="montofacturado"/>
                     <field name="montometa"/>
+                    <field name="logro"/>
                 </tree>
             </field>
         </record>
@@ -72,9 +76,10 @@
             <field name="model">metasventa.clientesreport</field>
             <field name="arch" type="xml">
                 <graph string="Analisis por Clientes">
-                    <field name = "name"/>
-                    <field name = "ano"/>                    
-                    <field name = "montofacturado"/>
+                    <field name="name"/>
+                    <field name="ano"/>                    
+                    <field name="montofacturado"/>
+                    <field name="logro"/>
                 </graph>
             </field>            
         </record>
@@ -84,9 +89,10 @@
             <field name="model">metasventa.clientesreport</field>
             <field name="arch" type="xml">
                 <pivot string="Metas por Clientes">                    
-                    <field name = "name"/>
-                    <field name = "ano"/>                    
-                    <field name = "montofacturado"/>
+                    <field name="name"/>
+                    <field name="ano"/>                    
+                    <field name="montofacturado"/>
+                    <field name="logro"/>
                 </pivot>
             </field>
         </record>
