@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from openerp import tools
 from openerp import models,fields,api
 
@@ -6,8 +7,19 @@ class MetasventaDataReport(models.Model):
     _auto = False
 
     id  = fields.Integer()    
-    ano = fields.Integer()
-    mes = fields.Integer()
+    ano = fields.Integer(string = "Año")
+    mes = fields.Selection ([(1,'Enero'),
+                             (2,'Febrero'),
+                             (3,'Marzo'),
+                             (4,'Abril'),
+                             (5,'Mayo'),
+                             (6,'Junio'),
+                             (7,'Julio'),
+                             (8,'Agosto'),
+                             (9,'Septiembre'),
+                             (10,'Octubre'),
+                             (11,'Noviembre'),
+                             (12,'Diciembre')]) # fields.Integer()
     name   = fields.Char(string="Vendedor")
     montofacturado = fields.Float(string="Monto Facturado")
     montometa      = fields.Float(string="Monto Pronosticado")
@@ -41,7 +53,7 @@ class MetasventaClientesReport(models.Model):
     _auto = False
 
     id  = fields.Integer()    
-    ano = fields.Integer()   
+    ano = fields.Integer(string = "Año")
     name   = fields.Char(string="Cliente")
     montofacturado = fields.Float(string="Monto Facturado")
     montometa      = fields.Float(string="Monto Pronosticado")

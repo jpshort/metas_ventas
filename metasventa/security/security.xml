@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="group_metasmanager" model="res.groups">
+            <field name="name">Metas Gerente</field>
+        </record>
+
+        <record id="group_metasventasusers" model="res.groups">
+            <field name="name">Metas Vendedores</field>
+        </record>
+    </data>
+</odoo>

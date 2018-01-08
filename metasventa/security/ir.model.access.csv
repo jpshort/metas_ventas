@@ -1,2 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom_addons/metasventa_custom_addons/metasventa,custom_addons/metasventa.custom_addons/metasventa,model_custom_addons/metasventa_custom_addons/metasventa,,1,0,0,0
+metasvendedores_manager,mentasvenderores manager,metasventa_metasvendedores,group_metas_manager,1,1,1,1
+metasclientes_manager,metasclientes manager,metasventa_metasclientes,group_metas_manager,1,1,1,1
+metasvendedores_read,vendedores metasmg,metasventa_vendedores,group_metas_manager,1,0,0,0
+metasclientes_read,all user metasmg,metasventa_metasclientes,group_metas_manager,1,0,0,0
+
