@@ -56,8 +56,8 @@
       </record>        
 
       <menuitem id="meta_vendedores_menu" name="Metas Vendedores" 
-                parent="base.menu_sales_config"
-                action="metasvendedores_list_actions"/> 
+                parent="sales_team.menu_sale_config"
+                action="metasvendedores_list_actions"/>  
 
                     <!-- VISTAS CLIENTES-->
 
@@ -112,7 +112,7 @@
       </record>
 
       <menuitem id="meta_clientes_menu" name="Metas Clientes"
-                parent="base.menu_sales_config"
-                action="metasclientes_list_actions"/> 
+                parent="sales_team.menu_sale_config"
+                action="metasclientes_list_actions"/>  
    </data>
 </openerp>

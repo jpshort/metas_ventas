@@ -52,7 +52,7 @@
         </record>
    
         <menuitem id="report_vendedores_menu" name="Reporte por Vendedores" 
-                  parent="base.menu_sales_config"
+                  parent="sales_team.menu_sale_config"
                   action="action_metas_vendedores_report" />
 
 
@@ -105,7 +105,7 @@
         </record>
    
         <menuitem id="report_clientes_menu" name="Reporte por Clientes" 
-                  parent="base.menu_sales_config"
+                  parent="sales_team.menu_sale_config"
                   action="action_metas_clientes_report" />
 
     </data>         

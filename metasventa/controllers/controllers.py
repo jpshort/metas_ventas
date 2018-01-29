@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import http
+from odoo import http
 
 # class CustomAddons/metasventa(http.Controller):
 #     @http.route('/custom_addons/metasventa/custom_addons/metasventa/', auth='public')

@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
-from openerp import tools
-from openerp import models,fields,api
+from odoo import tools
+from odoo import models,fields,api
 
 class MetasventaDataReport(models.Model):
     _name ='metasventa.vendedoresreport'
@@ -25,9 +25,9 @@ class MetasventaDataReport(models.Model):
     montometa      = fields.Float(string="Monto Pronosticado")
     logro          = fields.Float(string="% Logrado")
 
-    def init(self,cr):
-        tools.drop_view_if_exists(cr,self._table)
-        cr.execute("""
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr,self._table)
+        self.env.cr.execute("""
                     create or replace view %s as (                        
                         select u.id, 
                                u.login as name,
@@ -60,9 +60,9 @@ class MetasventaClientesReport(models.Model):
     montometa      = fields.Float(string="Monto Pronosticado")
     logro          = fields.Float(string="% Logrado")
 
-    def init(self,cr):
-        tools.drop_view_if_exists(cr,self._table)
-        cr.execute("""
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr,self._table)
+        self.env.cr.execute("""
                     create or replace view %s as (                        
                         select u.id, 
                                u.name as name,
