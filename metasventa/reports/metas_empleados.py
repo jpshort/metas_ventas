@@ -45,8 +45,7 @@ class MetasventaDataReport(models.Model):
                          and i.state not in ('cancel')
                          and m.ano = extract(year from  i.date_invoice)::int
                          and m.mes = extract(month from  i.date_invoice)::int
-                        group by u.id,u.login,m.ano,m.mes,m.monto
-                          )
+                        group by u.id,u.login,m.ano,m.mes,m.monto)
                 """ %(self._table))
 
 class MetasventaClientesReport(models.Model):
