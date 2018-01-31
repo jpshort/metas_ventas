@@ -42,7 +42,7 @@ class MetasventaDataReport(models.Model):
                         join account_invoice i 
                           on m.vendedor = i.user_id
                          and u.id  = i.user_id
-                         and i.state not in ('cancel')
+                         and i.state not in ('cancel','draft')
                          and m.ano = extract(year from  i.date_invoice)::int
                          and m.mes = extract(month from  i.date_invoice)::int
                         group by u.id,u.login,m.ano,m.mes,m.monto
@@ -76,7 +76,7 @@ class MetasventaClientesReport(models.Model):
                         join account_invoice i 
                           on m.cliente = i.partner_id
                          and u.id  = i.partner_id
-                         and i.state not in ('cancel')
+                         and i.state not in ('cancel','draft')
                          and m.ano = extract(year from  i.date_invoice)::int
                         group by u.id,u.name,m.ano,m.monto
                           )
