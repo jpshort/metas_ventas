@@ -4,9 +4,9 @@ from odoo import models,fields,api
 
 class MetasventaDataReport(models.Model):
     _name ='metasventa.vendedoresreport'
-    _auto = False
+#    _auto = False
 
-    id  = fields.Integer()    
+    #id  = fields.Integer()    
     ano = fields.Integer(string = "Año")
     mes = fields.Selection ([(1,'Enero'),
                              (2,'Febrero'),
@@ -25,28 +25,6 @@ class MetasventaDataReport(models.Model):
     montometa      = fields.Float(string="Monto Pronosticado")
     logro          = fields.Float(string="% Logrado")
 
-    def init(self):
-        tools.drop_view_if_exists(self.env.cr,self._table)
-        self.env.cr.execute("""
-                    create or replace view %s as (                        
-                        select u.id, 
-                               u.login as name,
-                               m.ano as ano,
-                               m.mes as mes,
-                               m.monto as montometa,
-                               sum(i.amount_untaxed) as montofacturado,                              
-                               sum((i.amount_untaxed/m.monto) * 100) as logro
-                        from metasventa_metasvendedores as m                        
-                        join res_users u 
-                          on u.id = m.vendedor
-                        join account_invoice i 
-                          on m.vendedor = i.user_id
-                         and u.id  = i.user_id
-                         and i.state in ('paid','open')
-                         and m.ano = extract(year from  i.date_invoice)::int
-                         and m.mes = extract(month from  i.date_invoice)::int
-                        group by u.id,u.login,m.ano,m.mes,m.monto)
-                """ %(self._table))
 
 class MetasventaClientesReport(models.Model):
     _name ='metasventa.clientesreport'
