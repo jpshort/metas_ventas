@@ -7,19 +7,19 @@ class MetasventaDataReport(models.Model):
 #    _auto = False
 
  #   id  = fields.Integer()    
-    ano = fields.Integer(string = "Año")
-    mes = fields.Selection ([(1,'Enero'),
-                             (2,'Febrero'),
-                             (3,'Marzo'),
-                             (4,'Abril'),
-                             (5,'Mayo'),
-                             (6,'Junio'),
-                             (7,'Julio'),
-                             (8,'Agosto'),
-                             (9,'Septiembre'),
-                             (10,'Octubre'),
-                             (11,'Noviembre'),
-                             (12,'Diciembre')]) # fields.Integer()
+    ano = fields.Char(string = "Año")
+    mes = fields.Selection ([('1','Enero'),
+                             ('2','Febrero'),
+                             ('3','Marzo'),
+                             ('4','Abril'),
+                             ('5','Mayo'),
+                             ('6','Junio'),
+                             ('7','Julio'),
+                             ('8','Agosto'),
+                             ('9','Septiembre'),
+                             ('10','Octubre'),
+                             ('11','Noviembre'),
+                             ('12','Diciembre')]) # fields.Integer()
     name   = fields.Char(string="Vendedor")
     montofacturado = fields.Float(string="Monto Facturado")
     montometa      = fields.Float(string="Monto Pronosticado")
@@ -44,8 +44,8 @@ class MetasventaClientesReport(models.Model):
                                u.name as name,
                                m.ano as ano,                               
                                m.monto as montometa,
-                               sum(i.amount_untaxed) as montofacturado,
-                               sum((i.amount_untaxed/m.monto) * 100) as logro
+                               sum(i.amount_untaxed_signed) as montofacturado,
+                               sum((i.amount_untaxed_signed/m.monto) * 100) as logro
                         from metasventa_metasclientes as m                        
                         join res_partner u 
                           on u.id = m.cliente

@@ -9,21 +9,22 @@ begin
 
   execute 'truncate table metasventa_vendedoresreport';
 
-  for cc in  select u.id, 
-                    u.login as name,
-                    m.ano as ano,
-                    m.mes as mes,
+  for cc in  select u.id,
+                    r.name as name,
+                    m.ano::text as ano,
+                    m.mes::text as mes,
                     m.monto as montometa,
-                    sum(i.amount_untaxed) as montofacturado,                              
-                    sum((i.amount_untaxed/m.monto) * 100) as logro
-               from metasventa_metasvendedores as m                        
+                    sum(i.amount_untaxed_signed) as montofacturado,
+                    sum((i.amount_untaxed_signed/m.monto) * 100) as logro
+               from metasventa_metasvendedores as m
                     join res_users u on u.id = m.vendedor
+                    join res_partner r on r.id = u.partner_id
                     join account_invoice i on m.vendedor = i.user_id
                 and u.id  = i.user_id
                 and i.state in ('paid','open')
                 and m.ano = extract(year from  i.date_invoice)::int
                 and m.mes = extract(month from  i.date_invoice)::int
-              group by u.id,u.login,m.ano,m.mes,m.monto  loop
+              group by u.id,r.name,m.ano,m.mes,m.monto loop
 			  
 			 insert into metasventa_vendedoresreport
 			            (name,ano,mes,montometa, montofacturado,logro)
